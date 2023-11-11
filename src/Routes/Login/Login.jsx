@@ -42,7 +42,7 @@ const Login = () => {
 
 
     return (
-        <div className="container mx-auto mt-20 w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-50 text-gray-800">
+        <div className="container mx-auto mt-20 w-full max-w-md p-4 rounded-md border sm:p-8 text-gray-800">
             <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
             <p className="text-sm text-center text-gray-600">Dont have account?
                 <Link to="/register">Sign up here</Link>
@@ -61,13 +61,13 @@ const Login = () => {
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <label className="block text-sm">Email address</label>
-                        <input type="email" required name="email" id="email" placeholder="Enter email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-cyan-600" />
+                        <input type="email" required name="email" id="email" placeholder="Enter email" className="w-full px-3 py-2 border rounded-md border-gray-300  text-gray-800 focus:border-cyan-600" />
                     </div>
                     <div className="space-y-2">
                         <div className="flex justify-between">
                             <label className="text-sm">Password</label>
                         </div>
-                        <input type="password" required name="password" id="password" placeholder="Enter password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-cyan-600" />
+                        <input type="password" required name="password" id="password" placeholder="Enter password" className="w-full px-3 py-2 border rounded-md border-gray-300  text-gray-800 focus:border-cyan-600" />
                     </div>
                 </div>
                 <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-cyan-600 text-gray-50">Sign in</button>

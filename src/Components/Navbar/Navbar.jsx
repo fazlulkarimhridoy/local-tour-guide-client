@@ -30,7 +30,7 @@ const Navbar = () => {
         <li></li>
     </>
     return (
-        <div className="container mx-auto navbar bg-gray-100">
+        <div className="navbar bg-gray-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,19 +40,19 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <img className="rounded-full w-1/5" src="https://i.ibb.co/mD8wJc4/Screenshot-406.png" alt="" />
+                <img className="pl-4 rounded-full w-1/5" src="https://i.ibb.co/mD8wJc4/Screenshot-406.png" alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-x-3">
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end pr-4">
                 {
                     user ?
-                        <button onClick={handleLogout} className="border bg-red-300 px-8 py-2 text-white font-bold rounded-md">Logout</button>
+                        <button onClick={handleLogout} className="border bg-red-600 px-8 py-2 text-white font-semibold text-xl rounded-md">Logout</button>
                         :
-                        <button className="border bg-cyan-400 px-8 py-2 text-white font-bold rounded-md"><Link to="/login">Login</Link></button>
+                        <button className="border bg-cyan-600 px-8 py-2 text-white font-semibold text-xl rounded-md"><Link to="/login">Login</Link></button>
                 }
             </div>
         </div>
