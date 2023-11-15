@@ -1,0 +1,20 @@
+
+import SingleService from "./SingleService";
+import { useLoaderData } from "react-router-dom";
+
+const Services = () => {
+    
+    const services = useLoaderData();
+
+
+    return (
+        <div className="pb-20 bg-gray-50">
+            <h2 className="text-center font-extrabold text-cyan-600 text-5xl pb-10">All services</h2>
+            {
+                services?.map(data => <SingleService key={data._id} data={data}></SingleService>)
+            }
+        </div>
+    );
+};
+
+export default Services;

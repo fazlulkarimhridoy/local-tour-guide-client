@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from 'sweetalert';
@@ -17,17 +17,32 @@ const Navbar = () => {
     }
 
 
-
-
-
     // nav links
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/services">Services</NavLink></li>
-        <li><NavLink to="/addServices">Add Services</NavLink></li>
-        <li><NavLink to="/login">Login</NavLink></li>
-        <li><NavLink to="/register">Register</NavLink></li>
-        <li></li>
+        {
+            user ?
+                <li>
+                    <div className="dropdown dropdown-bottom">
+                        <label tabIndex={0}>Dashboard</label>
+                        <ul tabIndex={0} className="dropdown-content z-[1] w-36 py-3 bg-gray-100">
+                            <li><Link to="/myBookings">My-services</Link></li>
+                            <li><Link to="/addServices">Add-services</Link></li>
+                            <li><Link to="mySchedules">My-schedules</Link></li>
+                        </ul>
+                    </div>
+                </li> : ""
+        }
+        {
+            user ?
+                "" :
+                <>
+                    <li><NavLink to="/login">Login</NavLink></li>
+                    <li><NavLink to="/register">Register</NavLink></li>
+                </>
+
+        }
     </>
     return (
         <div className="navbar bg-gray-50">
@@ -50,10 +65,15 @@ const Navbar = () => {
             <div className="navbar-end pr-4">
                 {
                     user ?
-                        <button onClick={handleLogout} className="border bg-red-600 px-8 py-2 text-white font-semibold text-xl rounded-md">Logout</button>
+                        <>  
+                            <img alt="" className="w-12 h-12 rounded-full mr-3 ri ri bg-gray-500 ri ri" src={user?.photoURL} />
+                            <button onClick={handleLogout} className="border bg-orange-500 px-8 py-2 text-white font-semibold text-xl rounded-md">Logout</button>
+                        </>
+
                         :
                         <button className="border bg-cyan-600 px-8 py-2 text-white font-semibold text-xl rounded-md"><Link to="/login">Login</Link></button>
                 }
+                
             </div>
         </div>
     );

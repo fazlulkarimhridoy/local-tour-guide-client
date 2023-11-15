@@ -1,0 +1,64 @@
+[
+  {
+    "ServiceImage": "https://i.ibb.co/ccNgmfc/panam-city-tour-walk.jpg",
+    "ServiceName": "City Walking Tour",
+    "ServiceDescription": "Discover the heart of the city with our informative guided walk.",
+    "ServiceProviderImage": "https://i.ibb.co/DMMNkwZ/125b882053f8e31761ec4a7458ad29d9.jpg",
+    "ServiceProviderName": "Abdul Karim",
+    "ServiceArea": "Narayanganj",
+    "ServicePrice": "350৳",
+    "ServiceProviderEmail": "abdulkarim@gmail.com"
+  },
+  {
+    "ServiceImage": "https://i.ibb.co/y6nD2sJ/39591588-700x525.jpg",
+    "ServiceName": "Nature Trail Hike",
+    "ServiceDescription": "Explore scenic trails and embrace the beauty of nature with our expert guide.",
+    "ServiceProviderImage": "https://i.ibb.co/F8ykLNg/istockphoto-172327787-612x612.jpg",
+    "ServiceProviderName": "Riazul Islam",
+    "ServiceArea": "Banderban",
+    "ServicePrice": "750৳",
+    "ServiceProviderEmail": "riazulislam@gmail.com"
+  },
+  {
+    "ServiceImage": "https://i.ibb.co/LSx1PF1/30.jpg",
+    "ServiceName": "Cultural Heritage Tour",
+    "ServiceDescription": "Immerse yourself in the local culture and history on this enriching tour.",
+    "ServiceProviderImage": "https://i.ibb.co/N7WMdgc/images.jpg",
+    "ServiceProviderName": "Taslima Akter",
+    "ServiceArea": "Dhaka",
+    "ServicePrice": "1150৳",
+    "ServiceProviderEmail": "taslimaakter@gmail.com"
+  },
+  {
+    "ServiceImage": "https://i.ibb.co/HCzhcQQ/74.jpg",
+    "ServiceName": "Gourmet Food Walk",
+    "ServiceDescription": "Savor delicious local cuisines while exploring the culinary delights of the city.",
+    "ServiceProviderImage": "https://i.ibb.co/JypVWyd/images-1.jpg",
+    "ServiceProviderName": "Aulad Hossain",
+    "ServiceArea": "Old Dhaka",
+    "ServicePrice": "150৳",
+    "ServiceProviderEmail": "auladhossain@gmail.com"
+  },
+  {
+    "ServiceImage": "https://i.ibb.co/Jcx4SRm/Kayaking-In-Dhaka-jpg.webp",
+    "ServiceName": "Adventure Kayak Excursion",
+    "ServiceDescription": "Experience thrilling kayaking adventures with our experienced guides.",
+    "ServiceProviderImage": "https://i.ibb.co/1d2Dhnw/500-F-238861713-AV80-Zyun-OIf-Y2-Pivzjt-Kp-J8g-HUe-Vlall.jpg",
+    "ServiceProviderName": "Russel Khan",
+    "ServiceArea": "Shitakundu",
+    "ServicePrice": "1867৳",
+    "ServiceProviderEmail": "russelkhan@gmail.com"
+  },
+  {
+    "ServiceImage": "https://i.ibb.co/gR4XKz6/8d4fe0d8-city-28030-164fcc85915.jpg",
+    "ServiceName": "Historical Landmarks Tour",
+    "ServiceDescription": "Embark on a journey through time as you explore the city's historical landmarks.",
+    "ServiceProviderImage": "https://i.ibb.co/HdJj2gP/bc976b2596bbb9e5ca0e9a9ad9839be4.png",
+    "ServiceProviderName": "Ashfaq Kabir",
+    "ServiceArea": "Lalbag,Dhaka",
+    "ServicePrice": "550৳",
+    "ServiceProviderEmail": "ashfaqkabir@gmail.com"
+  }
+]
+
+

@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const { loginWithGoogle, signIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     // handle google login
@@ -13,7 +15,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                swal("Google login!", "Successfully logged in using google!", "success")
+                swal("Google login!", "Successfully logged in using google!", "success");
+                navigate(location?.state? location.state : "/");
             })
     }
 
@@ -29,8 +32,10 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
+                console.log(user);
                 if (user.uid) {
                     swal("Login Successful", "You are logged in", "success");
+                    navigate(location?.state? location.state : "/")
                 }
             })
             .catch(err => {
@@ -42,7 +47,7 @@ const Login = () => {
 
 
     return (
-        <div className="container mx-auto mt-20 w-full max-w-md p-4 rounded-md border sm:p-8 text-gray-800">
+        <div className="container mx-auto mt-20 w-full max-w-md p-4 rounded-md border sm:p-8 text-gray-800 mb-20">
             <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
             <p className="text-sm text-center text-gray-600">Dont have account?
                 <Link to="/register">Sign up here</Link>

@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from "sweetalert";
 
 const Register = () => {
     const { signUp, loginWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     // handle google login
@@ -14,6 +16,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 swal("Google login!", "Successfully logged in using google!", "success")
+                navigate(location?.state? location.state : "/");
             })
     }
 
@@ -43,7 +46,7 @@ const Register = () => {
 
 
     return (
-        <div className="container mx-auto mt-20 w-full max-w-md p-4 border rounded-md sm:p-8 text-gray-800">
+        <div className="container mx-auto mt-20 w-full max-w-md p-4 border rounded-md sm:p-8 text-gray-800 mb-20">
             <h2 className="mb-3 text-3xl font-semibold text-center">Create a new account</h2>
             <p className="text-sm text-center text-gray-600">Already have an account?
                 <Link to="/login">Sign in here</Link>
