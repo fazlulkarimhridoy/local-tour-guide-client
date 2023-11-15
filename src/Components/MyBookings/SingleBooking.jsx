@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
-const SingleBooking = ({ data }) => {
-    const { serviceName, serviceImage, providerEmail, serviceDate, servicePrice, specialInstruction } = data;
+const SingleBooking = ({ data, pending }) => {
+    const { serviceName, serviceImage, providerEmail, userEmail, serviceDate, servicePrice, specialInstruction } = data;
     return (
 
         <tr>
@@ -19,7 +19,10 @@ const SingleBooking = ({ data }) => {
                     </div>
                     <div>
                         <div className="font-bold">{serviceName}</div>
-                        <div className="text-sm opacity-50">{providerEmail}</div>
+                        
+                        {
+                            pending? <div className="text-sm opacity-50">{userEmail}</div> : <div className="text-sm opacity-50">{providerEmail}</div>
+                        }
                     </div>
                 </div>
             </td>

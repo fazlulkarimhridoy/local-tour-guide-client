@@ -77,6 +77,7 @@ const AddServices = () => {
 
     return (
         <section className="bg-gray-50" >
+            <h2 className="text-3xl text-cyan-600 font-bold text-center">Create a new service here</h2>
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
                     <form onSubmit={handleAddService} action="" className="space-y-4">

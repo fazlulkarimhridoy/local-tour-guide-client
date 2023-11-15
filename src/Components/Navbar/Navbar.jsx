@@ -27,9 +27,9 @@ const Navbar = () => {
                     <div className="dropdown dropdown-bottom">
                         <label tabIndex={0}>Dashboard</label>
                         <ul tabIndex={0} className="dropdown-content z-[1] w-36 py-3 bg-gray-100">
-                            <li><Link to="/myBookings">My-services</Link></li>
+                            <li><Link to="/myServices">My-services</Link></li>
                             <li><Link to="/addServices">Add-services</Link></li>
-                            <li><Link to="mySchedules">My-schedules</Link></li>
+                            <li><Link to="/myBookings">My-schedules</Link></li>
                         </ul>
                     </div>
                 </li> : ""
