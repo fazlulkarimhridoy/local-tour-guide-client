@@ -65,12 +65,12 @@ const Register = () => {
             <form onSubmit={handleSignUp} className="space-y-8">
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <label className="block text-sm">First Name</label>
-                        <input type="text" placeholder="Enter first name" className="w-full px-3 py-2 border rounded-md border-gray-300  text-gray-800 focus:border-cyan-600" />
+                        <label className="block text-sm">Full Name</label>
+                        <input type="text" placeholder="Enter full name" className="w-full px-3 py-2 border rounded-md border-gray-300  text-gray-800 focus:border-cyan-600" />
                     </div>
                     <div className="space-y-2">
-                        <label className="block text-sm">Last Name</label>
-                        <input type="text" placeholder="Enter last name" className="w-full px-3 py-2 border rounded-md border-gray-300  text-gray-800 focus:border-cyan-600" />
+                        <label className="block text-sm">Photo URL</label>
+                        <input type="text" placeholder="Enter photo url" className="w-full px-3 py-2 border rounded-md border-gray-300  text-gray-800 focus:border-cyan-600" />
                     </div>
                     <div className="space-y-2">
                         <label className="block text-sm">Email address</label>
