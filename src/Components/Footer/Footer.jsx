@@ -5,7 +5,7 @@ const Footer = () => {
             <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                 <div className="lg:w-1/3">
                     <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                            <img className="flex-shrink-0 w-28 h-28 rounded-full text-gray-50" src="https://i.ibb.co/frwKyFc/Screenshot-406.png" alt="" />
+                            <img className="flex-shrink-0 w-24 h-24 rounded-full text-gray-50" src="https://i.ibb.co/frwKyFc/Screenshot-406.png" alt="" />
                         <span className="self-center text-2xl font-semibold">Tour</span>
                     </a>
                 </div>

@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from 'sweetalert';
@@ -15,7 +15,6 @@ const Navbar = () => {
             })
             .catch()
     }
-
 
     // nav links
     const links = <>
@@ -55,7 +54,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <img className="pl-4 rounded-full w-1/5" src="https://i.ibb.co/mD8wJc4/Screenshot-406.png" alt="" />
+                <Link to="/"><img className="pl-4 rounded-full w-1/6" src="https://i.ibb.co/mD8wJc4/Screenshot-406.png" alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-x-3">
@@ -65,15 +64,18 @@ const Navbar = () => {
             <div className="navbar-end pr-4">
                 {
                     user ?
-                        <>  
-                            <img alt="" className="w-12 h-12 rounded-full mr-3 ri ri bg-gray-500 ri ri" src={user?.photoURL} />
-                            <button onClick={handleLogout} className="border bg-orange-500 px-8 py-2 text-white font-semibold text-xl rounded-md">Logout</button>
+                        <>
+                            <div className="flex justify-center mr-3 items-center border border-cyan-600 rounded-3xl py-1 px-2">
+                                <h2 className="pr-2 text-cyan-600 text-sm lg:text-2xl font-semibold font-serif">{user.displayName}</h2>
+                                <img alt="" className="w-10 h-10 rounded-3xl ri ri bg-gray-500 ri ri" src={user?.photoURL} />
+                            </div>
+                            <button onClick={handleLogout} className="border bg-orange-500 px-8 py-2 text-white font-semibold text-xl rounded-3xl">Logout</button>
                         </>
 
                         :
-                        <button className="border bg-cyan-600 px-8 py-2 text-white font-semibold text-xl rounded-md"><Link to="/login">Login</Link></button>
+                        <button className="border bg-cyan-600 px-8 py-2 text-white font-semibold text-xl rounded-3xl"><Link to="/login">Login</Link></button>
                 }
-                
+
             </div>
         </div>
     );
