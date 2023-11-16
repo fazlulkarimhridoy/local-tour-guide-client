@@ -16,6 +16,8 @@ import ServiceDetail from './Components/ServiceDetail/ServiceDetail';
 import AddServices from './Components/AddServices/AddServices';
 import MyBookings from './Components/MyBookings/MyBookings';
 import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
+import MyServices from './Components/MyServices/MyServices';
+import UpdateService from './Components/UpdateService.jsx/UpdateService';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,15 @@ const router = createBrowserRouter([
       {
         path: "/myBookings",
         element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
+      },
+      {
+        path: "/myServices",
+        element: <PrivateRoute><MyServices></MyServices></PrivateRoute>
+      },
+      {
+        path: "updateService/:id",
+        element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`)
       }
     ]
   },

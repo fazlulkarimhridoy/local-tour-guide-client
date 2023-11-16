@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-
 import { Link } from "react-router-dom";
 
-const SingleService = ({ data }) => {
+const MyService = ({ data, handleDelete }) => {
     const { _id, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = data;
     return (
         <div className="p-4 lg:p-8 bg-gray-50 text-gray-800 w-[1200px] mx-auto">
@@ -29,8 +28,17 @@ const SingleService = ({ data }) => {
 
                         </div>
                         <h2 className="text-cyan-600 pb-2 text-lg font-medium">Service Area : {ServiceArea}</h2>
-                        <h2 className="text-cyan-600 pb-4 text-lg font-medium">Price : {ServicePrice}</h2>
-                        <Link to={`/services/${_id}`}><button type="button" className="self-start w-[480px] btn bg-cyan-600 text-white hover:bg-sky-400">View Details</button></Link>
+                        <h2 className="text-cyan-600 pb-4 text-lg font-medium">Price : {ServicePrice}৳</h2>
+                        <div className="flex flex-col lg:flex-row gap-6">
+                            <Link to={`/updateService/${_id}`}>
+                                <button className="self-start w-[200px] btn bg-cyan-600 text-white hover:bg-sky-400">
+                                    Update
+                                </button>
+                            </Link>
+                            <button onClick={() => handleDelete(_id)} className="self-start w-[200px] btn bg-red-700 text-white hover:bg-orange-600">
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,4 +46,4 @@ const SingleService = ({ data }) => {
     );
 };
 
-export default SingleService;
+export default MyService;
