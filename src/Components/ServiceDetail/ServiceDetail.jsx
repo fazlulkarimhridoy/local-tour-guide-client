@@ -1,16 +1,37 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FiMapPin } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
+import ProviderOtherServices from "./ProviderOtherServices";
 
 const ServiceDetail = () => {
+    // states and loaders
     const serviceDetails = useLoaderData();
-    const { ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = serviceDetails;
+    const { _id, ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = serviceDetails;
     const { user } = useContext(AuthContext);
+    const [providerEmail, setProviderEmail] = useState("");
+    const [otherServices, setOtherServices] = useState([]);
     const navigate = useNavigate();
+
+    // useEffect for provider email
+    useEffect(() => {
+        setProviderEmail(ServiceProviderEmail);
+    }, [ServiceProviderEmail])
+
+    // useEffect for provider all service
+    useEffect(() => {
+        axios.get(`http://localhost:5000/service/${providerEmail}`)
+            .then(res => {
+                const data = res.data;
+                console.log(data);
+                const remainingOthers = data.filter(data => data._id != _id);
+                setOtherServices(remainingOthers);
+            })
+    }, [providerEmail, _id])
+
 
     // handle purchase
     const handlePurchase = (event) => {
@@ -47,6 +68,8 @@ const ServiceDetail = () => {
 
     return (
         <section className="bg-gray-50">
+
+            {/* service details */}
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
                     <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
@@ -195,6 +218,23 @@ const ServiceDetail = () => {
                         </dialog>
                     </div>
                 </div>
+            </div>
+
+            {/* other services of this user */}
+            <div>
+                <section className="py-6 sm:py-12 bg-gray-100 text-gray-800">
+                    <div className="container p-6 mx-auto space-y-8">
+                        <div className="space-y-2 text-center">
+                            <h2 className="text-3xl font-bold">Provider related other services</h2>
+                            <p className="font-serif text-sm text-gray-600">All other services of this provider is showing below.</p>
+                        </div>
+                        <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+                            {
+                                otherServices?.map(data => <ProviderOtherServices key={data._id} data={data}></ProviderOtherServices>)
+                            }
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
     );
