@@ -7,6 +7,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import ProviderOtherServices from "./ProviderOtherServices";
 
+
 const ServiceDetail = () => {
     // states and loaders
     const serviceDetails = useLoaderData();
