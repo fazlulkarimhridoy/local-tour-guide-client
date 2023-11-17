@@ -1,3 +1,4 @@
+import { Typewriter } from "react-simple-typewriter";
 
 const Banner = () => {
     return (
@@ -9,13 +10,23 @@ const Banner = () => {
                     <h1 className="text-3xl font-extrabold sm:text-5xl">
                         A local tour guide.
                         <strong className="font-extrabold text-cyan-700 sm:block">
-                            Featuring tours & more.
+                            <Typewriter
+                                words={['Featuring tours & more.']}
+                                loop={5}
+                                cursor
+                                cursorStyle='...'
+                            ></Typewriter>
                         </strong>
                     </h1>
 
                     <p className="mt-4 sm:text-xl/relaxed">
-                        Anyone can provide services in our website as well as he can book others services and make schedules for him.
-                        Best services are provided in our website using different mindsets and more!
+                        <Typewriter
+                            words={['Anyone can provide services in our website as well as he can book others services and make schedules for him. Best services are provided our website using different mindsets and more']}
+                            loop={5}
+                            cursor
+                            cursorStyle='...'
+                        ></Typewriter>
+
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
