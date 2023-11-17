@@ -22,7 +22,7 @@ const UpdateService = () => {
         const ServiceDescription = form.get("service_description");
 
         // sending data to backend
-        axios.put(`http://localhost:5000/services/${_id}`,{
+        axios.put(`https://local-tour-server.vercel.app/services/${_id}`,{
             ServiceName,
             ServiceImage,
             ServiceProviderName,

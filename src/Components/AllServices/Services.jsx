@@ -34,7 +34,7 @@ const Services = () => {
         console.log(search);
 
 
-        fetch(`http://localhost:5000/findService/${search}`)
+        fetch(`https://local-tour-server.vercel.app/findService/${search}`)
             .then(res => res.json())
             .then(result => {
                 setServices(result);

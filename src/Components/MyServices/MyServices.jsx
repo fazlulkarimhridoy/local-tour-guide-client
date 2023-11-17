@@ -12,7 +12,7 @@ const MyServices = () => {
 
     // useEffect for fetching data
     useEffect(() => {
-        axios.get(`http://localhost:5000/service/${firebaseEmail}`, { withCredentials: true })
+        axios.get(`https://local-tour-server.vercel.app/service/${firebaseEmail}`, { withCredentials: true })
             .then(res => {
                 const data = res.data;
                 setMyServices(data);
@@ -21,7 +21,7 @@ const MyServices = () => {
 
     // handle delete
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/service/${id}`)
+        axios.delete(`https://local-tour-server.vercel.app/service/${id}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);

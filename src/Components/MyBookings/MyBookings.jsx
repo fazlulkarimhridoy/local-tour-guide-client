@@ -12,7 +12,7 @@ const MyBookings = () => {
 
     // useEffect for my bookings
     useEffect(() => {
-        axios.get(`http://localhost:5000/myBooking/${newEmail}`, { withCredentials: true })
+        axios.get(`https://local-tour-server.vercel.app/myBooking/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setBookings(res.data)
             });
@@ -20,7 +20,7 @@ const MyBookings = () => {
 
     // useEffect for my pending works
     useEffect(() => {
-        axios.get(`http://localhost:5000/myPendingWorks/${newEmail}`, { withCredentials: true })
+        axios.get(`https://local-tour-server.vercel.app/myPendingWorks/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setPending(res.data)
                 console.log(res.data);
@@ -28,7 +28,7 @@ const MyBookings = () => {
     }, [newEmail])
 
     const handleBookingDelete = (id) => {
-        axios.delete(`http://localhost:5000/bookings/${id}`)
+        axios.delete(`https://local-tour-server.vercel.app/bookings/${id}`)
             .then(res => {
                 const data = res.data
                 console.log(data);

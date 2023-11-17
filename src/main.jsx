@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=>fetch("http://localhost:5000/services")
+        loader: ()=>fetch("https://local-tour-server.vercel.app/services")
       },
       {
         path: "/login",
@@ -41,12 +41,12 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: ()=>fetch("http://localhost:5000/services")
+        loader: ()=>fetch("https://local-tour-server.vercel.app/services")
       },
       {
         path: "/services/:id",
         element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({params})=>fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
       },
       {
         path: "/addServices",
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: "updateService/:id",
         element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({params})=> fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
       }
     ]
   },

@@ -24,7 +24,7 @@ const ServiceDetail = () => {
 
     // useEffect for provider all service
     useEffect(() => {
-        axios.get(`http://localhost:5000/otherService/${providerEmail}`)
+        axios.get(`https://local-tour-server.vercel.app/otherService/${providerEmail}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -47,7 +47,7 @@ const ServiceDetail = () => {
         const specialInstruction = form.get("special_instruction");
 
         // use effect
-        axios.post("http://localhost:5000/addBooking", {
+        axios.post("https://local-tour-server.vercel.app/addBooking", {
             serviceName,
             serviceImage,
             providerEmail,
