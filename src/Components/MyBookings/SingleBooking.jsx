@@ -31,7 +31,7 @@ const SingleBooking = ({ data, pending, handleBookingDelete }) => {
             </td>
             <td>
                 <br />
-                <span className="badge badge-ghost badge-sm">{servicePrice}</span>
+                <span className="badge badge-ghost badge-sm">{servicePrice}৳</span>
             </td>
             <td>
                 <br />

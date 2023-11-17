@@ -30,12 +30,17 @@ const MyService = ({ data, handleDelete }) => {
                         <h2 className="text-cyan-600 pb-2 text-lg font-medium">Service Area : {ServiceArea}</h2>
                         <h2 className="text-cyan-600 pb-4 text-lg font-medium">Price : {ServicePrice}৳</h2>
                         <div className="flex flex-col lg:flex-row gap-6">
+                            <Link to={`/services/${_id}`}>
+                                <button className="self-start w-[150px] btn bg-cyan-600 text-white hover:bg-sky-400">
+                                    View
+                                </button>
+                            </Link>
                             <Link to={`/updateService/${_id}`}>
-                                <button className="self-start w-[200px] btn bg-cyan-600 text-white hover:bg-sky-400">
+                                <button className="self-start w-[150px] btn bg-amber-600 text-white hover:bg-yellow-500">
                                     Update
                                 </button>
                             </Link>
-                            <button onClick={() => handleDelete(_id)} className="self-start w-[200px] btn bg-red-700 text-white hover:bg-orange-600">
+                            <button onClick={() => handleDelete(_id)} className="self-start w-[150px] btn bg-red-700 text-white hover:bg-orange-600">
                                 Delete
                             </button>
                         </div>

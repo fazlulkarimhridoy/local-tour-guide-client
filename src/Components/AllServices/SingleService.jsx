@@ -29,7 +29,7 @@ const SingleService = ({ data }) => {
 
                         </div>
                         <h2 className="text-cyan-600 pb-2 text-lg font-medium">Service Area : {ServiceArea}</h2>
-                        <h2 className="text-cyan-600 pb-4 text-lg font-medium">Price : {ServicePrice}</h2>
+                        <h2 className="text-cyan-600 pb-4 text-lg font-medium">Price : {ServicePrice}৳</h2>
                         <Link to={`/services/${_id}`}><button type="button" className="self-start lg:w-[480px] btn bg-cyan-600 text-white hover:bg-sky-400">View Details</button></Link>
                     </div>
                 </div>

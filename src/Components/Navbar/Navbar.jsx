@@ -69,11 +69,11 @@ const Navbar = () => {
                                 <h2 className="pr-2 text-cyan-600 text-sm lg:text-2xl font-semibold font-serif">{user.displayName}</h2>
                                 <img alt="" className="w-10 h-10 rounded-3xl ri ri bg-gray-500 ri ri" src={user?.photoURL} />
                             </div>
-                            <button onClick={handleLogout} className="border bg-orange-500 px-8 py-2 text-white font-semibold text-xl rounded-3xl">Logout</button>
+                            <button onClick={handleLogout} className="border bg-orange-500 px-8 py-3 text-white font-semibold text-xl rounded-3xl">Logout</button>
                         </>
 
                         :
-                        <button className="border bg-cyan-600 px-8 py-2 text-white font-semibold text-xl rounded-3xl"><Link to="/login">Login</Link></button>
+                        <button className="border bg-cyan-600 px-8 py-3 text-white font-semibold text-xl rounded-3xl"><Link to="/login">Login</Link></button>
                 }
 
             </div>

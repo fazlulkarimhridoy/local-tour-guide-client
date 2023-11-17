@@ -12,7 +12,7 @@ const MyBookings = () => {
 
     // useEffect for my bookings
     useEffect(() => {
-        axios.get(`http://localhost:5000/myBooking/${newEmail}`)
+        axios.get(`http://localhost:5000/myBooking/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setBookings(res.data)
             });
@@ -20,7 +20,7 @@ const MyBookings = () => {
 
     // useEffect for my pending works
     useEffect(() => {
-        axios.get(`http://localhost:5000/myPendingWorks/${newEmail}`)
+        axios.get(`http://localhost:5000/myPendingWorks/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setPending(res.data)
                 console.log(res.data);

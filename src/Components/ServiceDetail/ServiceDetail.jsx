@@ -23,7 +23,7 @@ const ServiceDetail = () => {
 
     // useEffect for provider all service
     useEffect(() => {
-        axios.get(`http://localhost:5000/service/${providerEmail}`)
+        axios.get(`http://localhost:5000/otherService/${providerEmail}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -72,7 +72,7 @@ const ServiceDetail = () => {
             {/* service details */}
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-                    <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
+                    <div className="relative h-64 overflow-hidden rounded sm:h-80 lg:order-last lg:h-full">
                         <img
                             alt="Party"
                             src={ServiceImage}
@@ -82,7 +82,7 @@ const ServiceDetail = () => {
 
                     <div className="">
                         {/* author information */}
-                        <div className="p-8 sm:flex sm:space-x-6 bg-gray-100 text-gray-800 mb-6 shadow-lg">
+                        <div className="p-8 sm:flex sm:space-x-6 border text-gray-800 mb-6">
                             <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
                                 <img src={ServiceProviderImage} alt="" className="object-cover object-center w-full h-full rounded bg-gray-500" />
                             </div>
@@ -109,14 +109,16 @@ const ServiceDetail = () => {
                             </div>
                         </div>
                         {/* service details */}
-                        <h2 className="text-3xl font-bold sm:text-4xl">{ServiceName}</h2>
-                        <p className="mt-4 text-gray-600">
-                            {ServiceDescription}
-                        </p>
-                        <h2 className="text-lg font-medium">Price : {ServicePrice}</h2>
+                        <div className="px-8 py-3 border">
+                            <h2 className="text-3xl font-bold sm:text-4xl">{ServiceName}</h2>
+                            <p className="mt-2 text-gray-600">
+                                {ServiceDescription}
+                            </p>
+                            <h2 className="text-lg font-medium">Price : {ServicePrice}৳</h2>
 
-                        {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn mt-8 inline-block rounded-md bg-cyan-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-400" onClick={() => document.getElementById('my_modal_5').showModal()}>Book Now</button>
+                            {/* Open the modal using document.getElementById('ID').showModal() method */}
+                            <button className="btn mt-4 inline-block rounded-md bg-cyan-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-400" onClick={() => document.getElementById('my_modal_5').showModal()}>Book Now</button>
+                        </div>
                         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                             <div className="bg-white border p-6 w-1/2">
                                 <div className="lg:col-span-7  xl:col-span-6">
@@ -222,11 +224,11 @@ const ServiceDetail = () => {
 
             {/* other services of this user */}
             <div>
-                <section className="py-6 sm:py-12 bg-gray-100 text-gray-800">
+                <section className="py-6 sm:py-12 bg-gray-50 text-gray-800">
                     <div className="container p-6 mx-auto space-y-8">
                         <div className="space-y-2 text-center">
                             <h2 className="text-3xl font-bold">Provider related other services</h2>
-                            <p className="font-serif text-sm text-gray-600">All other services of this provider is showing below.</p>
+                            <p className="font-serif text-sm text-gray-600">Click on service to view details.</p>
                         </div>
                         <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                             {

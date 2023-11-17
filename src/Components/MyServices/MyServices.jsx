@@ -12,7 +12,7 @@ const MyServices = () => {
 
     // useEffect for fetching data
     useEffect(() => {
-        axios.get(`http://localhost:5000/service/${firebaseEmail}`)
+        axios.get(`http://localhost:5000/service/${firebaseEmail}`, { withCredentials: true })
             .then(res => {
                 const data = res.data;
                 setMyServices(data);
