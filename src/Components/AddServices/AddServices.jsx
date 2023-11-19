@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const AddServices = () => {
     // states & constructors
@@ -55,8 +56,8 @@ const AddServices = () => {
         const ServiceProviderEmail = form.get("provider_email");
         const ServiceDescription = form.get("service_description");
 
-        axios.post("https://local-tour-server.vercel.app/addService", {
-            
+        axios.post("http://localhost:5000/addService", {
+
             ServiceImage,
             ServiceName,
             ServiceDescription,
@@ -68,7 +69,7 @@ const AddServices = () => {
         })
             .then(res => {
                 console.log(res.data);
-                if(res.data.insertedId){
+                if (res.data.insertedId) {
                     swal("Successful", "New service added", "success")
                 }
             })
@@ -77,6 +78,9 @@ const AddServices = () => {
 
     return (
         <section className="bg-gray-50" >
+            <Helmet>
+                <title>Local Tours || Add Services</title>
+            </Helmet>
             <h2 className="text-3xl text-cyan-600 font-bold text-center">Create a new service here</h2>
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
@@ -87,9 +91,9 @@ const AddServices = () => {
                                 <label className="block text-sm font-medium text-gray-700">
                                     Service Name
                                 </label>
-                                <input 
+                                <input
                                     value={serviceName}
-                                    onChange={(event)=> setServiceName(event.target.value)}
+                                    onChange={(event) => setServiceName(event.target.value)}
                                     className="w-full rounded-lg border p-3 text-sm"
                                     placeholder="Service Name"
                                     type="text"
@@ -103,7 +107,7 @@ const AddServices = () => {
                                 </label>
                                 <input
                                     value={serviceImage}
-                                    onChange={(event)=>setServiceImage(event.target.value)}
+                                    onChange={(event) => setServiceImage(event.target.value)}
                                     className="w-full rounded-lg border p-3 text-sm"
                                     placeholder="Service Image Url"
                                     type="text"
@@ -151,7 +155,7 @@ const AddServices = () => {
                                 </label>
                                 <input
                                     value={serviceArea}
-                                    onChange={(event)=> setServiceArea(event.target.value)}
+                                    onChange={(event) => setServiceArea(event.target.value)}
                                     className="w-full rounded-lg border p-3 text-sm"
                                     placeholder="Service Area"
                                     type="text"
@@ -165,7 +169,7 @@ const AddServices = () => {
                                 </label>
                                 <input
                                     value={servicePrice}
-                                    onChange={(event)=> setServicePrice(event.target.value)}
+                                    onChange={(event) => setServicePrice(event.target.value)}
                                     className="w-full rounded-lg border p-3 text-sm"
                                     placeholder="Price"
                                     type="text"
@@ -196,7 +200,7 @@ const AddServices = () => {
                             </label>
                             <textarea
                                 value={ServiceDescription}
-                                onChange={(event)=> setServiceDescription(event.target.value)}
+                                onChange={(event) => setServiceDescription(event.target.value)}
                                 className="w-full rounded-lg border p-3 text-sm"
                                 placeholder="Message"
                                 type="text"

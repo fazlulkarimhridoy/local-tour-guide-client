@@ -6,32 +6,30 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
 import ProviderOtherServices from "./ProviderOtherServices";
+import { Helmet } from "react-helmet-async";
 
 
 const ServiceDetail = () => {
     // states and loaders
-    const serviceDetails = useLoaderData();
-    const { _id, ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = serviceDetails;
+    const loaderData = useLoaderData();
     const { user } = useContext(AuthContext);
-    const [providerEmail, setProviderEmail] = useState("");
     const [otherServices, setOtherServices] = useState([]);
+    const { _id, ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = loaderData;
     const navigate = useNavigate();
 
-    // useEffect for provider email
-    useEffect(() => {
-        setProviderEmail(ServiceProviderEmail);
-    }, [ServiceProviderEmail])
+
 
     // useEffect for provider all service
     useEffect(() => {
-        axios.get(`https://local-tour-server.vercel.app/otherService/${providerEmail}`)
+        axios.get(`http://localhost:5000/otherService/${ServiceProviderEmail}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);
                 const remainingOthers = data.filter(data => data._id != _id);
                 setOtherServices(remainingOthers);
             })
-    }, [providerEmail, _id])
+
+    }, [ServiceProviderEmail, _id])
 
 
     // handle purchase
@@ -47,7 +45,7 @@ const ServiceDetail = () => {
         const specialInstruction = form.get("special_instruction");
 
         // use effect
-        axios.post("https://local-tour-server.vercel.app/addBooking", {
+        axios.post("http://localhost:5000/addBooking", {
             serviceName,
             serviceImage,
             providerEmail,
@@ -69,6 +67,9 @@ const ServiceDetail = () => {
 
     return (
         <section className="bg-gray-50">
+            <Helmet>
+                <title>Local Tours || Service Details</title>
+            </Helmet>
 
             {/* service details */}
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">

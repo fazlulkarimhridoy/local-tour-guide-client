@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "local-tour-21b42"
-  }
+    "default": "tour-guide-assignment"
+  },
+  "targets": {},
+  "etags": {}
 }

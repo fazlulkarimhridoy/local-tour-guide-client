@@ -4,10 +4,14 @@ import HomeServices from "./HomeServices";
 import Contact from "./Contact";
 import Review from "./Review";
 import Gallery from "./Gallery";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     return (
         <div className="bg-gray-50">
+            <Helmet>
+                <title>Local Tours || Home</title>
+            </Helmet>
             <Banner></Banner>
             <HomeServices></HomeServices>
             <div className="flex justify-center pb-6">

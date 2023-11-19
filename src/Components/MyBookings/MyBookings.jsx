@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
@@ -12,7 +13,7 @@ const MyBookings = () => {
 
     // useEffect for my bookings
     useEffect(() => {
-        axios.get(`https://local-tour-server.vercel.app/myBooking/${newEmail}`, { withCredentials: true })
+        axios.get(`http://localhost:5000/myBooking/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setBookings(res.data)
             });
@@ -20,7 +21,7 @@ const MyBookings = () => {
 
     // useEffect for my pending works
     useEffect(() => {
-        axios.get(`https://local-tour-server.vercel.app/myPendingWorks/${newEmail}`, { withCredentials: true })
+        axios.get(`http://localhost:5000/myPendingWorks/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setPending(res.data)
                 console.log(res.data);
@@ -28,7 +29,7 @@ const MyBookings = () => {
     }, [newEmail])
 
     const handleBookingDelete = (id) => {
-        axios.delete(`https://local-tour-server.vercel.app/bookings/${id}`)
+        axios.delete(`http://localhost:5000/bookings/${id}`)
             .then(res => {
                 const data = res.data
                 console.log(data);
@@ -45,6 +46,9 @@ const MyBookings = () => {
 
     return (
         <div className="overflow-x-auto bg-gray-50">
+            <Helmet>
+            <title>Local Tours || Bookings & Pendings</title>
+            </Helmet>
 
             {/* my bookings */}
             <h2 className="text-center font-extrabold text-cyan-600 text-4xl pb-10">Bookings of Mr. {user.displayName}</h2>

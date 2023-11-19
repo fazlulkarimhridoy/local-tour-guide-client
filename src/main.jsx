@@ -18,6 +18,7 @@ import MyBookings from './Components/MyBookings/MyBookings';
 import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
 import MyServices from './Components/MyServices/MyServices';
 import UpdateService from './Components/UpdateService.jsx/UpdateService';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=>fetch("https://local-tour-server.vercel.app/services")
+        loader: () => fetch("http://localhost:5000/services")
       },
       {
         path: "/login",
@@ -41,12 +42,12 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: ()=>fetch("https://local-tour-server.vercel.app/services")
+        loader: () => fetch("http://localhost:5000/services")
       },
       {
         path: "/services/:id",
         element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>,
-        loader: ({params})=>fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
       },
       {
         path: "/addServices",
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: "updateService/:id",
         element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-        loader: ({params})=> fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
       }
     ]
   },
@@ -71,8 +72,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )

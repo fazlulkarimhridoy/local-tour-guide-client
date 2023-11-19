@@ -1,7 +1,17 @@
-import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+// import { useLoaderData } from "react-router-dom";
 
 const Gallery = () => {
-    const data = useLoaderData();
+    // const data = useLoaderData();
+    const [galleryData, setGalleryData] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:5000/services")
+            .then(res => {
+                const data = res.data;
+                setGalleryData(data)
+            })
+    }, [])
     return (
         <section>
             <div className="w-3/4 px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
@@ -13,7 +23,7 @@ const Gallery = () => {
 
                 <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                     {
-                        data?.map(data => <>
+                        galleryData?.map(data =>
                             <li key={data._id}>
                                 <a className="block overflow-hidden group">
                                     <img
@@ -22,10 +32,8 @@ const Gallery = () => {
                                         className="w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
                                     />
                                 </a>
-                            </li>
-                        </>).slice(4,10)
+                            </li>).slice(4, 10)
                     }
-
                 </ul>
             </div>
         </section>

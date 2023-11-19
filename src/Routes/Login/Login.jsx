@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { loginWithGoogle, signIn } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 swal("Google login!", "Successfully logged in using google!", "success");
-                navigate(location?.state? location.state : "/");
+                navigate(location?.state ? location.state : "/");
             })
     }
 
@@ -35,7 +36,7 @@ const Login = () => {
                 console.log(user);
                 if (user.uid) {
                     swal("Login Successful", "You are logged in", "success");
-                    navigate(location?.state? location.state : "/")
+                    navigate(location?.state ? location.state : "/")
                 }
             })
             .catch(err => {
@@ -48,6 +49,9 @@ const Login = () => {
 
     return (
         <div className="container mx-auto mt-20 w-full max-w-md p-4 rounded-md border sm:p-8 text-gray-800 mb-20">
+            <Helmet>
+                <title>Local Tours || Login</title>
+            </Helmet>
             <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
             <p className="text-sm text-center text-gray-600">Dont have account?
                 <Link to="/register">Sign up here</Link>

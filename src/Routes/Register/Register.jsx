@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { signUp, loginWithGoogle } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 swal("Google login!", "Successfully logged in using google!", "success")
-                navigate(location?.state? location.state : "/");
+                navigate(location?.state ? location.state : "/");
             })
     }
 
@@ -51,6 +52,9 @@ const Register = () => {
 
     return (
         <div className="container mx-auto mt-20 w-full max-w-md p-4 border rounded-md sm:p-8 text-gray-800 mb-20">
+            <Helmet>
+                <title>Local Tours || Register</title>
+            </Helmet>
             <h2 className="mb-3 text-3xl font-semibold text-center">Create a new account</h2>
             <p className="text-sm text-center text-gray-600">Already have an account?
                 <Link to="/login">Sign in here</Link>

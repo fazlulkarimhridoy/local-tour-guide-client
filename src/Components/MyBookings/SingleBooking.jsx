@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+
 const SingleBooking = ({ data, pending, handleBookingDelete }) => {
     const { _id, serviceName, serviceImage, providerEmail, userEmail, serviceDate, servicePrice, specialInstruction } = data;
 

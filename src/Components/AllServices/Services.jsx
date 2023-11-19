@@ -2,28 +2,29 @@
 import { useEffect, useState } from "react";
 import SingleService from "./SingleService";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 // import axios from "axios";
 
 const Services = () => {
     // states & loaders
-    const data = useLoaderData();
+    const loaderData = useLoaderData();
     const [services, setServices] = useState([]);
 
     // useEffects
     useEffect(() => {
-        setServices(data.slice(0, 6));
-    }, [data])
+        setServices(loaderData.slice(0, 6));
+    }, [loaderData])
 
 
 
     // handle show all
     const handleShowAll = () => {
-        setServices(data);
+        setServices(loaderData);
     }
 
     // handle show less
     const handleShowLess = () => {
-        setServices(data.slice(0, 6))
+        setServices(loaderData.slice(0, 6))
     }
 
 
@@ -34,7 +35,7 @@ const Services = () => {
         console.log(search);
 
 
-        fetch(`https://local-tour-server.vercel.app/findService/${search}`)
+        fetch(`http://localhost:5000/findService/${search}`)
             .then(res => res.json())
             .then(result => {
                 setServices(result);
@@ -45,6 +46,9 @@ const Services = () => {
 
     return (
         <div className="pb-20 bg-gray-50">
+            <Helmet>
+                <title>Local Tours || All Services</title>
+            </Helmet>
             <h2 className="text-center font-extrabold text-cyan-600 text-5xl pb-10">All services</h2>
             <div className="relative w-1/3 mx-auto">
                 <label htmlFor="Search" className="sr-only"> Search </label>

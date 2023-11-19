@@ -8,9 +8,8 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     if (loading) {
         // if loading is true show this spinner
-        <div className="flex justify-center pt-40">
-            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-cyan-600">
-            </div>
+        return <div className="flex justify-center pt-40">
+            <progress className="progress w-56"></progress>
         </div>
     }
     // if logged in then return the element

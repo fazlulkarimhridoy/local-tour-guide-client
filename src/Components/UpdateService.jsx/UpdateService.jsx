@@ -1,11 +1,12 @@
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 const UpdateService = () => {
     const serviceData = useLoaderData();
-    const {_id, ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea} = serviceData;
-    const location =  useLocation();
+    const { _id, ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = serviceData;
+    const location = useLocation();
     const navigate = useNavigate();
 
     // handle update
@@ -22,7 +23,7 @@ const UpdateService = () => {
         const ServiceDescription = form.get("service_description");
 
         // sending data to backend
-        axios.put(`https://local-tour-server.vercel.app/services/${_id}`,{
+        axios.put(`http://localhost:5000/services/${_id}`, {
             ServiceName,
             ServiceImage,
             ServiceProviderName,
@@ -32,14 +33,14 @@ const UpdateService = () => {
             ServiceDescription,
             ServiceProviderEmail
         })
-        .then(res=>{
-            const data = res.data;
-            console.log(data);
-            if(data.modifiedCount > 0){
-                swal("Updated", "Successfully updated service", "success");
-                navigate(location?.state ? location.state : "/myServices");
-            }
-        })
+            .then(res => {
+                const data = res.data;
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    swal("Updated", "Successfully updated service", "success");
+                    navigate(location?.state ? location.state : "/myServices");
+                }
+            })
 
     }
 
@@ -49,6 +50,9 @@ const UpdateService = () => {
 
     return (
         <section className="bg-gray-50" >
+            <Helmet>
+                <title>Local Tours || Update Services</title>
+            </Helmet>
             <h2 className="text-3xl text-cyan-600 font-bold text-center">Create a new service here</h2>
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">

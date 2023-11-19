@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import MyService from "./MyService";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const MyServices = () => {
     // states and contexts
@@ -10,9 +11,10 @@ const MyServices = () => {
     const [myServices, setMyServices] = useState([]);
     const firebaseEmail = user.email;
 
+
     // useEffect for fetching data
     useEffect(() => {
-        axios.get(`https://local-tour-server.vercel.app/service/${firebaseEmail}`, { withCredentials: true })
+        axios.get(`http://localhost:5000/service/${firebaseEmail}`, { withCredentials: true })
             .then(res => {
                 const data = res.data;
                 setMyServices(data);
@@ -21,7 +23,7 @@ const MyServices = () => {
 
     // handle delete
     const handleDelete = (id) => {
-        axios.delete(`https://local-tour-server.vercel.app/service/${id}`)
+        axios.delete(`http://localhost:5000/service/${id}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -35,6 +37,9 @@ const MyServices = () => {
 
     return (
         <div className="pb-20 bg-gray-50">
+            <Helmet>
+                <title>Local Tours || My Services</title>
+            </Helmet>
             <h2 className="text-center font-extrabold text-cyan-600 text-5xl pb-10">Services of Mr. {user.displayName}</h2>
             {
                 myServices?.map(data => <MyService
