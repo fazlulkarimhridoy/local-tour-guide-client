@@ -3,40 +3,27 @@ import { useEffect, useState } from "react";
 import SingleService from "./SingleService";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-// import { AuthContext } from "../../Providers/AuthProvider";
 
 const Services = () => {
-    // states & loaders
-    // const { loading } = useContext(AuthContext)
     const loaderData = useLoaderData();
     const [services, setServices] = useState([]);
-    const [dataLoading, setDataLoading] = useState(true);
 
     
 
     // useEffects
     useEffect(() => {
-        setDataLoading(false);
         setServices(loaderData.slice(0, 6));
     }, [loaderData])
 
-    // if loading is true then show this progress
-    // if (loading) {
-    //     return <div className="flex justify-center pt-40">
-    //         <progress className="progress w-56"></progress>
-    //     </div>
-    // }
 
 
     // handle show all
     const handleShowAll = () => {
-        setDataLoading(false);
         setServices(loaderData);
     }
 
     // handle show less
     const handleShowLess = () => {
-        setDataLoading(false);
         setServices(loaderData.slice(0, 6))
     }
 
@@ -51,16 +38,10 @@ const Services = () => {
         fetch(`https://local-tour-server.vercel.app/findService/${search}`)
             .then(res => res.json())
             .then(result => {
-                setDataLoading(false);
                 setServices(result);
             })
     }
 
-    if (dataLoading) {
-        return <div className="flex justify-center mb-10 mt-10">
-            <progress className="progress w-56"></progress>
-        </div>
-    }
 
     return (
         <div className="pb-20 bg-gray-50">

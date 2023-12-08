@@ -5,16 +5,10 @@ import Contact from "./Contact";
 import Review from "./Review";
 import Gallery from "./Gallery";
 import { Helmet } from "react-helmet-async";
-// import { useContext } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
+
 
 const Home = () => {
-    // const { loading } = useContext(AuthContext);
-    // if (loading) {
-    //     return <div className="flex justify-center pt-40">
-    //         <progress className="progress w-56"></progress>
-    //     </div>
-    // }
+
     return (
         <div className="bg-gray-50">
             <Helmet>
