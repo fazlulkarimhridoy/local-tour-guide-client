@@ -1,4 +1,6 @@
-Live link : https://local-tour-client.vercel.app
+live link : https://local-tour-client.vercel.app
+server live link : https://local-tour-server.vercel.app
+server github link : https://github.com/fazlulkarimhridoy/local-tour-project-server
 
 
 5 features are given below:
