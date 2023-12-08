@@ -1,4 +1,4 @@
-Live link : https://tour-guide-assignment.web.app
+Live link : https://local-tour-client.vercel.app
 
 
 5 features are given below:
