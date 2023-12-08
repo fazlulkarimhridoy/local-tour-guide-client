@@ -1,12 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-// import { useLoaderData } from "react-router-dom";
+import {  useEffect, useState } from "react";
 
 const Gallery = () => {
-    // const data = useLoaderData();
     const [galleryData, setGalleryData] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/services")
+        axios.get("https://local-tour-server.vercel.app/services")
             .then(res => {
                 const data = res.data;
                 setGalleryData(data)
@@ -20,7 +18,6 @@ const Gallery = () => {
                         Service Images
                     </h2>
                 </header>
-
                 <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                     {
                         galleryData?.map(data =>

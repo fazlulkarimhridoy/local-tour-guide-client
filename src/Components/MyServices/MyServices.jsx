@@ -7,23 +7,30 @@ import { Helmet } from "react-helmet-async";
 
 const MyServices = () => {
     // states and contexts
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
     const [myServices, setMyServices] = useState([]);
     const firebaseEmail = user.email;
 
 
     // useEffect for fetching data
     useEffect(() => {
-        axios.get(`http://localhost:5000/service/${firebaseEmail}`, { withCredentials: true })
+        axios.get(`https://local-tour-server.vercel.app/service/${firebaseEmail}`, { withCredentials: true })
             .then(res => {
                 const data = res.data;
                 setMyServices(data);
             })
     }, [firebaseEmail])
 
+    // if loading then show this progress
+    if (loading) {
+        return <div className="flex justify-center pt-40">
+            <progress className="progress w-56"></progress>
+        </div>
+    }
+
     // handle delete
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/service/${id}`)
+        axios.delete(`https://local-tour-server.vercel.app/service/${id}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);

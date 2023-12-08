@@ -56,7 +56,7 @@ const AddServices = () => {
         const ServiceProviderEmail = form.get("provider_email");
         const ServiceDescription = form.get("service_description");
 
-        axios.post("http://localhost:5000/addService", {
+        axios.post("https://local-tour-server.vercel.app/addService", {
 
             ServiceImage,
             ServiceName,

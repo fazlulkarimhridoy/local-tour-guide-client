@@ -6,14 +6,14 @@ import swal from "sweetalert";
 import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
     const [pending, setPending] = useState([])
     const newEmail = user.email;
 
     // useEffect for my bookings
     useEffect(() => {
-        axios.get(`http://localhost:5000/myBooking/${newEmail}`, { withCredentials: true })
+        axios.get(`https://local-tour-server.vercel.app/myBooking/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setBookings(res.data)
             });
@@ -21,15 +21,22 @@ const MyBookings = () => {
 
     // useEffect for my pending works
     useEffect(() => {
-        axios.get(`http://localhost:5000/myPendingWorks/${newEmail}`, { withCredentials: true })
+        axios.get(`https://local-tour-server.vercel.app/myPendingWorks/${newEmail}`, { withCredentials: true })
             .then(res => {
                 setPending(res.data)
                 console.log(res.data);
             })
     }, [newEmail])
 
+    // if loading then show this progress
+    if (loading) {
+        return <div className="flex justify-center pt-40">
+            <progress className="progress w-56"></progress>
+        </div>
+    }
+
     const handleBookingDelete = (id) => {
-        axios.delete(`http://localhost:5000/bookings/${id}`)
+        axios.delete(`https://local-tour-server.vercel.app/bookings/${id}`)
             .then(res => {
                 const data = res.data
                 console.log(data);
@@ -47,7 +54,7 @@ const MyBookings = () => {
     return (
         <div className="overflow-x-auto bg-gray-50">
             <Helmet>
-            <title>Local Tours || Bookings & Pendings</title>
+                <title>Local Tours || Bookings & Pendings</title>
             </Helmet>
 
             {/* my bookings */}

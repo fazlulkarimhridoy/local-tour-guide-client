@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from 'sweetalert';
 
-
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
 
@@ -18,11 +17,11 @@ const Navbar = () => {
 
     // nav links
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/services">Services</NavLink></li>
+        <li className="text-cyan-600"><NavLink to="/">Home</NavLink></li>
+        <li className="text-cyan-600"><NavLink to="/services">Services</NavLink></li>
         {
             user ?
-                <li>
+                <li className="text-cyan-600">
                     <div className="dropdown dropdown-bottom">
                         <label tabIndex={0}>Dashboard</label>
                         <ul tabIndex={0} className="dropdown-content z-[1] w-36 py-3 bg-gray-100">
@@ -33,12 +32,13 @@ const Navbar = () => {
                     </div>
                 </li> : ""
         }
-        <li><NavLink to="/login">Login</NavLink></li>
+
         {
             user ?
                 "" :
                 <>
-                    <li><NavLink to="/register">Register</NavLink></li>
+                    <li className="text-cyan-600"><NavLink to="/login">Login</NavLink></li>
+                    <li className="text-cyan-600"><NavLink to="/register">Register</NavLink></li>
                 </>
 
         }
@@ -65,15 +65,15 @@ const Navbar = () => {
                 {
                     user ?
                         <>
-                            <div className="flex justify-center mr-3 items-center border border-cyan-600 rounded-3xl py-1 px-2">
-                                <h2 className="pr-2 text-cyan-600 text-sm lg:text-2xl font-semibold font-serif">{user.displayName}</h2>
-                                <img alt="" className="w-10 h-10 rounded-3xl ri ri bg-gray-500 ri ri" src={user?.photoURL} />
+                            <div className="flex justify-center mr-3 items-center py-1 px-2">
+                                <sup className="pr-2 text-cyan-600 text-sm lg:text-lg font-medium font-serif">{user.displayName}</sup>
+                                <img alt="" className="w-12 h-12 border border-cyan-600 rounded-3xl ri ri bg-gray-500 ri ri" src={user?.photoURL} />
                             </div>
-                            <button onClick={handleLogout} className="border bg-orange-500 px-8 py-3 text-white font-semibold text-xl rounded-3xl">Logout</button>
+                            <button onClick={handleLogout} className="border bg-red-600 px-6 py-2 text-white font-semibold text-lg rounded-3xl">Logout</button>
                         </>
 
                         :
-                        <button className="border bg-cyan-600 px-8 py-3 text-white font-semibold text-xl rounded-3xl"><Link to="/login">Login</Link></button>
+                        <button className="border bg-cyan-600 px-6 py-2 text-white font-semibold text-lg rounded-3xl"><Link to="/login">Login</Link></button>
                 }
 
             </div>

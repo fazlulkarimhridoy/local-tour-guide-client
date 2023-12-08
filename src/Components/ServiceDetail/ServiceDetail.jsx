@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet-async";
 const ServiceDetail = () => {
     // states and loaders
     const loaderData = useLoaderData();
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [otherServices, setOtherServices] = useState([]);
     const { _id, ServiceProviderEmail, ServiceImage, ServiceName, ServiceDescription, ServiceProviderImage, ServiceProviderName, ServicePrice, ServiceArea } = loaderData;
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ServiceDetail = () => {
 
     // useEffect for provider all service
     useEffect(() => {
-        axios.get(`http://localhost:5000/otherService/${ServiceProviderEmail}`)
+        axios.get(`https://local-tour-server.vercel.app/otherService/${ServiceProviderEmail}`)
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -30,6 +30,13 @@ const ServiceDetail = () => {
             })
 
     }, [ServiceProviderEmail, _id])
+
+    // if loading then show this progress
+    if (loading) {
+        return <div className="flex justify-center pt-40">
+            <progress className="progress w-56"></progress>
+        </div>
+    }
 
 
     // handle purchase
@@ -45,7 +52,7 @@ const ServiceDetail = () => {
         const specialInstruction = form.get("special_instruction");
 
         // use effect
-        axios.post("http://localhost:5000/addBooking", {
+        axios.post("https://local-tour-server.vercel.app/addBooking", {
             serviceName,
             serviceImage,
             providerEmail,

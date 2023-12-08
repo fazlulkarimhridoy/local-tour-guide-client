@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     if (loading) {
         // if loading is true show this spinner
-        return <div className="flex justify-center pt-40">
+        return <div className="flex justify-center mt-80 mb-80">
             <progress className="progress w-56"></progress>
         </div>
     }

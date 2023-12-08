@@ -19,6 +19,11 @@ import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
 import MyServices from './Components/MyServices/MyServices';
 import UpdateService from './Components/UpdateService.jsx/UpdateService';
 import { HelmetProvider } from 'react-helmet-async';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -29,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/services")
+        loader: () => fetch("https://local-tour-server.vercel.app/services")
       },
       {
         path: "/login",
@@ -42,12 +47,12 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/services")
+        loader: () => fetch("https://local-tour-server.vercel.app/services")
       },
       {
         path: "/services/:id",
         element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
       },
       {
         path: "/addServices",
@@ -64,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "updateService/:id",
         element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
       }
     ]
   },
@@ -73,9 +78,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>
-      <AuthProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={router}></RouterProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     </HelmetProvider>
   </React.StrictMode>,
 )
