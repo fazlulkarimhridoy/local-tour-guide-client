@@ -1,46 +1,58 @@
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import SingleService from "./SingleService";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const Services = () => {
-    const loaderData = useLoaderData();
-    const [services, setServices] = useState([]);
+    // const loaderData = useLoaderData();
+    // const [services, setServices] = useState([]);
 
-    
+    const { data: services = [], isLoading, isPending, isFetching } = useQuery({
+        queryKey: ["services"],
+        queryFn: async () => {
+            const res = await axios.get("https://local-tour-server.vercel.app/services");
+            return res.data;
+        },
+        retry: 2,
+        refetchOnWindowFocus: false
+    })
+
+    // useEffect(() => {
+    //     setServices(data);
+    // }, [data])
+
 
     // useEffects
-    useEffect(() => {
-        setServices(loaderData.slice(0, 6));
-    }, [loaderData])
+    // useEffect(() => {
+    //     setServices(data?.slice(0, 6));
+    // }, [data])
 
 
 
     // handle show all
-    const handleShowAll = () => {
-        setServices(loaderData);
-    }
+    // const handleShowAll = () => {
+    //     setServices(data);
+    // }
 
     // handle show less
-    const handleShowLess = () => {
-        setServices(loaderData.slice(0, 6))
-    }
+    // const handleShowLess = () => {
+    //     setServices(data?.slice(0, 6))
+    // }
 
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const search = form.get("search");
-        console.log(search);
-
-
-        fetch(`https://local-tour-server.vercel.app/findService/${search}`)
-            .then(res => res.json())
-            .then(result => {
-                setServices(result);
-            })
-    }
+    // const handleSearch = async (e) => {
+    //     e.preventDefault();
+    //     const form = new FormData(e.currentTarget);
+    //     const search = form.get("search");
+    //     await axios.get(`https://local-tour-server.vercel.app/findService/${search}`)
+    //         .then(res => {
+    //             const data = res.data;
+    //             setServices(data);
+    //         })
+    // }
 
 
     return (
@@ -49,7 +61,7 @@ const Services = () => {
                 <title>Local Tours || All Services</title>
             </Helmet>
             <h2 className="text-center font-extrabold text-cyan-600 text-5xl pb-10">All services</h2>
-            <div className="relative w-1/3 mx-auto">
+            {/* <div className="relative w-1/3 mx-auto">
                 <label htmlFor="Search" className="sr-only"> Search </label>
 
                 <form onSubmit={handleSearch}>
@@ -81,11 +93,15 @@ const Services = () => {
                         </button>
                     </span>
                 </form>
-            </div>
+            </div> */}
             {
-                services?.map(data => <SingleService key={data._id} data={data}></SingleService>)
+                isLoading || isPending || isFetching ?
+                    <div className="flex items-center justify-center py-5">
+                        <progress className="progress w-56"></progress>
+                    </div> :
+                    services?.map(data => <SingleService key={data._id} data={data}></SingleService>)
             }
-            {
+            {/* {
                 services.length <= 6 ?
                     <div className="flex justify-center">
                         <button onClick={handleShowAll} className="btn bg-cyan-600 hover:bg-sky-400 text-center text-white">Show All</button>
@@ -93,7 +109,7 @@ const Services = () => {
                     <div className="flex justify-center">
                         <button onClick={handleShowLess} className="btn bg-cyan-600 hover:bg-sky-400 text-center text-white">Show less</button>
                     </div>
-            }
+            } */}
         </div>
     );
 };

@@ -11,22 +11,15 @@ const Banner = () => {
                         A local tour guide.
                         <strong className="font-extrabold text-cyan-700 sm:block">
                             <Typewriter
-                                words={['Featuring tours & more.']}
-                                loop={5}
+                                words={['Featuring tours & more']}
                                 cursor
-                                cursorStyle='...'
+                                cursorStyle='.'
                             ></Typewriter>
                         </strong>
                     </h1>
 
                     <p className="mt-4 sm:text-xl/relaxed">
-                        <Typewriter
-                            words={['Anyone can provide services in our website as well as he can book others services and make schedules for him. Best services are provided our website using different mindsets and more']}
-                            loop={5}
-                            cursor
-                            cursorStyle='...'
-                        ></Typewriter>
-
+                        Anyone can provide services in our website as well as he can book others services and make schedules for him. Best services are provided our website using different mindsets and more
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center gap-4">

@@ -34,7 +34,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://local-tour-server.vercel.app/services")
       },
       {
         path: "/login",
@@ -47,12 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("https://local-tour-server.vercel.app/services")
       },
       {
         path: "/services/:id",
         element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://local-tour-server.vercel.app/services/${params.id}`)
       },
       {
         path: "/addServices",
