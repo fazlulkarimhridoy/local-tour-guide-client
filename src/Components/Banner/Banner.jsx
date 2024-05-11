@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 const Banner = () => {
@@ -23,19 +24,13 @@ const Banner = () => {
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
-                        <a
-                            className="block w-full rounded bg-cyan-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-cyan-700 focus:outline-none focus:ring active:bg-cyan-500 sm:w-auto"
-                            href="/get-started"
-                        >
-                            Book Now
-                        </a>
+                        <button className="block w-full rounded bg-cyan-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-cyan-700 focus:outline-none focus:ring active:bg-cyan-500 sm:w-auto">
+                            <Link to="/services">Book Now</Link>
+                        </button>
 
-                        <a
-                            className="block w-full rounded px-12 py-3 text-sm font-medium text-cyan-600 shadow hover:text-cyan-700 focus:outline-none focus:ring active:text-cyan-500 sm:w-auto"
-                            href="/about"
-                        >
-                            Click to learn more..
-                        </a>
+                        <button className="block w-full rounded px-12 py-3 text-sm font-medium text-cyan-600 shadow hover:text-cyan-700 focus:outline-none focus:ring active:text-cyan-500 sm:w-auto">
+                            <Link to="/services">Click to learn more..</Link>
+                        </button>
                     </div>
                 </div>
             </div>

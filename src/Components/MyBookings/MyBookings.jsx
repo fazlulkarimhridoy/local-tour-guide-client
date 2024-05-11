@@ -12,7 +12,7 @@ const MyBookings = () => {
 
 
     // useEffect for my bookings
-    const { data: bookings = [], isLoading: isBookingLoading, isFetching: isBookingFetching, isPending: isBookingPending, refetch: refetchBooking } = useQuery({
+    const { data: bookings = [], isLoading: isBookingLoading, isFetching: isBookingFetching, isPending: isBookingPending, refetch: refetchBooking, error: errorBooking } = useQuery({
         queryKey: ["myBookings", newEmail],
         queryFn: async () => {
             const res = await axios.get(`https://local-tour-server.vercel.app/myBooking/${newEmail}`, { withCredentials: true });
@@ -23,7 +23,7 @@ const MyBookings = () => {
     })
 
 
-    const { data: pending = [], isLoading: isPendingLoading, isFetching: isPendingFetching, isPending: isPendingPending, refetch: refetchPending } = useQuery({
+    const { data: pending = [], isLoading: isPendingLoading, isFetching: isPendingFetching, isPending: isPendingPending, refetch: refetchPending, error: errorPending } = useQuery({
         queryKey: ["myPendingWorks", newEmail],
         queryFn: async () => {
             const res = await axios.get(`https://local-tour-server.vercel.app/myPendingWorks/${newEmail}`, { withCredentials: true });
@@ -47,7 +47,7 @@ const MyBookings = () => {
     }
 
     return (
-        <div className="overflow-x-auto bg-gray-50"
+        <div className="overflow-x-auto overflow-y-hidden bg-gray-50 min-h-screen"
             style={{
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
@@ -76,7 +76,7 @@ const MyBookings = () => {
                             {
                                 isBookingLoading || isBookingFetching || isBookingPending ?
                                     <div className="flex items-center justify-center py-5">
-                                        <progress className="progress w-56"></progress>
+                                        <progress className="progress w-56 h-5"></progress>
                                     </div>
                                     :
                                     bookings?.map(data =>
@@ -85,11 +85,18 @@ const MyBookings = () => {
                                             handleBookingDelete={handleBookingDelete}
                                             data={data}></SingleBooking>)
                             }
+                            {
+                                errorBooking && <div className="flex items-center justify-center py-5">
+                                    <p className="text-red-600 text-2xl">Internal server error. Reload and try again later.</p>
+                                </div>
+                            }
                         </tbody>
                     </table>
                     :
                     <h3 className="text-center text-xl font-medium">No bookings found</h3>
             }
+
+
 
             {/* my services people booked */}
             <h2 className="text-center font-extrabold text-cyan-600 text-4xl pb-10">Pending works of Mr. {user?.displayName}</h2>
@@ -108,7 +115,7 @@ const MyBookings = () => {
                     {
                         isPendingLoading || isPendingFetching || isPendingPending ?
                             <div className="flex items-center justify-center py-5">
-                                <progress className="progress w-56"></progress>
+                                <progress className="progress w-56 h-5"></progress>
                             </div>
                             :
                             pending?.map(data => <SingleBooking
@@ -116,6 +123,11 @@ const MyBookings = () => {
                                 pending={pending}
                                 handleBookingDelete={handleBookingDelete}
                                 data={data}></SingleBooking>)
+                    }
+                    {
+                        errorPending && <div className="flex items-center justify-center py-5">
+                            <p className="text-red-600 text-2xl">Internal server error. Reload and try again later.</p>
+                        </div>
                     }
                 </tbody>
             </table>

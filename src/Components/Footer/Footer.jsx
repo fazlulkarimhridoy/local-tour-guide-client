@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
+import logo from "../../assets/tourguidlogo.png"
 
 const Footer = () => {
     return (
-        <footer className="px-4 pt-36 divide-y bg-gray-50 text-gray-800">
+        <footer className="px-4 pt-36 divide-y bg-gray-200 text-gray-800">
             <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                 <div className="lg:w-1/3">
-                    <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                            <img className="flex-shrink-0 w-24 h-24 rounded-full text-gray-50" src="https://i.ibb.co/frwKyFc/Screenshot-406.png" alt="" />
-                        <span className="self-center text-2xl font-semibold">Tour</span>
-                    </a>
+                    <button className="flex justify-center space-x-3 lg:justify-start">
+                        <Link to="/">
+                            <img className="flex-shrink-0 w-1/3 rounded-full text-gray-50" src={logo} alt="logo" />
+                        </Link>
+                    </button>
                 </div>
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                     <div className="space-y-3">

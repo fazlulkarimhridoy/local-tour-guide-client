@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
     if (loading) {
         // if loading is true show this spinner
         return <div className="flex justify-center mt-80 mb-80">
-            <progress className="progress w-56"></progress>
+            <progress className="progress w-56 h-5"></progress>
         </div>
     }
     // if logged in then return the element
