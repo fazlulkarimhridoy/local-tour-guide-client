@@ -51,13 +51,13 @@ const Navbar = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="lg:hidden">
-                    <Link to="/"><img className="pl-4 rounded-full w-3/5" src={logo} /></Link>
+                    <Link to="/"><img className="pl-4 rounded-full w-3/5 md:w-2/5" src={logo} /></Link>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
                         {links}
                     </ul>
                 </div>
-                <Link to="/"><img className="pl-4 rounded-full w-1/5 hidden md:flex" src={logo} /></Link>
+                <Link to="/"><img className="pl-4 rounded-full w-1/5 hidden lg:flex" src={logo} /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-x-3 rounded-none">
