@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 import logo from "../../assets/tourguidlogo.png"
 import { FaSignInAlt } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
@@ -51,14 +50,14 @@ const Navbar = () => {
         <div className="navbar bg-gray-200">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <GiHamburgerMenu size={25}></GiHamburgerMenu>
+                    <label tabIndex={0} className="lg:hidden">
+                    <Link to="/"><img className="pl-4 rounded-full w-3/5" src={logo} /></Link>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
                         {links}
                     </ul>
                 </div>
-                <Link to="/"><img className="pl-4 rounded-full w-1/5" src={logo} alt="" /></Link>
+                <Link to="/"><img className="pl-4 rounded-full w-1/5 hidden md:flex" src={logo} /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-x-3 rounded-none">
