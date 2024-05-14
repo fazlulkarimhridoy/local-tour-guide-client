@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from 'sweetalert';
 import logo from "../../assets/tourguidlogo.png"
-import { FaSignInAlt } from "react-icons/fa";
+import { FaPowerOff } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
@@ -51,7 +51,7 @@ const Navbar = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="lg:hidden">
-                    <Link to="/"><img className="pl-4 rounded-full w-3/5 md:w-2/5" src={logo} /></Link>
+                        <Link to="/"><img className="pl-4 rounded-full w-3/5 md:w-2/5" src={logo} /></Link>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
                         {links}
@@ -75,13 +75,23 @@ const Navbar = () => {
                                             <img className="w-12 h-12 border border-cyan-600 rounded-3xl bg-gray-500" src={user?.photoURL} />
                                         </button>
                                     </label>
-                                    <ul tabIndex={0} className="bg-gray-100 border-y border-x border-y-black border-x-gray-200 dropdown-content mt-2 z-[1] w-[200px] py-3 rounded">
+                                    {/* <ul tabIndex={0} className="bg-gray-100 border-y border-x border-y-black border-x-gray-200 dropdown-content mt-2 z-[1] w-[200px] py-3 rounded">
                                         <li className="flex justify-center items-center gap-3 text-base py-2 px-3 border-2 border-gray-100 hover:border-2 hover:rounded hover:border-black hover:transition-all hover:duration-200 hover:bg-gray-200 w-full font-semibold text-gray-600">
                                             <FaRegUser></FaRegUser> {user?.displayName}
                                         </li>
                                         <li className="mt-2">
                                             <button onClick={handleLogout} className="flex text-center items-center justify-center gap-3 border-2 border-gray-100 hover:border-2 hover:rounded hover:border-black hover:transition-all hover:duration-200 hover:bg-red-100 w-full py-2 font-semibold text-red-600 text-lg">
                                                 <FaSignInAlt></FaSignInAlt> Logout
+                                            </button>
+                                        </li>
+                                    </ul> */}
+                                    <ul tabIndex={0} className="bg-white dropdown-content mt-2 z-[1] w-[200px] p-1 rounded-md">
+                                        <li className="flex items-center gap-3 text-sm py-1.5 px-3 border-2 border-white hover:border-2 hover:rounded hover:border-black hover:transition-all hover:duration-200 hover:bg-gray-200 w-full font-semibold text-gray-600 cursor-pointer">
+                                            <FaRegUser />{user?.displayName}
+                                        </li>
+                                        <li className="mt-2">
+                                            <button onClick={handleLogout} className="flex items-center gap-3 px-3 border-2 border-white hover:border-2 hover:rounded hover:border-black hover:transition-all hover:duration-200 hover:bg-red-100 w-full py-1.5 font-semibold text-red-600 text-sm">
+                                                <FaPowerOff /> Sign Out
                                             </button>
                                         </li>
                                     </ul>

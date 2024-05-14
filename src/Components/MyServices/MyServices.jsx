@@ -44,7 +44,7 @@ const MyServices = () => {
             {
                 isLoading || isPending || isFetching ?
                     <div className="flex items-center justify-center py-5">
-                        <progress className="progress w-56"></progress>
+                        <progress className="progress w-56 h-5"></progress>
                     </div>
                     :
                     myServices?.map(data => <MyService
